@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "primereact/resources/themes/lara-light-blue/theme.css";
+import { PrimeReactProvider } from 'primereact/api';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +13,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <PrimeReactProvider value={{ripple: true}}>
+          {children}
+        </PrimeReactProvider>
+      </body>
     </html>
   );
 }
