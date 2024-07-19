@@ -12,8 +12,8 @@ export default function Viewing({params}){
     useEffect(()=>{
         ctx.socket.on("syncFiles", (data)=>{
             console.log(data)
-            if (data.sender == params.socketID){
-                setUser({"files": data.files})
+            if (data.data.sender == params.socketID){
+                setUser({"files": data.data.files})
             }
         })
     }, [])
