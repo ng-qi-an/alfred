@@ -40,6 +40,6 @@ export default function Home(){
           </Splitter>
         </SandpackLayout>
       </SandpackProvider> */}
-      <Editor onChange={(files)=> ctx.socket.emit('syncFiles', {'sender': ctx.socket.id, 'files': files})}/>
+      <Editor onFileChange={(file)=> ctx.socket.emit("syncSelectedFile", {activeFile: file, sender: ctx.socket.id})} onChange={(files)=> ctx.socket.emit('syncFiles', {'sender': ctx.socket.id, 'files': files})}/>
   </div>
 }

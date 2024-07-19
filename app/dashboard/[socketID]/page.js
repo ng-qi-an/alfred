@@ -24,7 +24,7 @@ export default function Viewing({params}){
             router.replace('/dashboard')
         }
     }, [])
-    return <div className="flex flex-col items-center justify-center h-screen px-[20px]">
-        {user.files && <Editor files={user.files} />}
+    return <div className="flex flex-col items-center justify-center h-screen px-[20px] pointer-events-none">
+        {user.files && <Editor files={user.files} readOnly={true} />}
     </div>
 }
