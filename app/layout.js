@@ -1,13 +1,13 @@
 'use client';
 
-import { Inter } from "next/font/google";
+import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
 import { PrimeReactProvider } from 'primereact/api';
 import { createContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const inter = Inter({ subsets: ["latin"] });
+const nunito = Nunito({ subsets: ["latin"] });
 
 
 export const MainContext = createContext({})
@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
   }, [])
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <PrimeReactProvider value={{ripple: true}}>
           <MainContext.Provider value={{socket, setSocket, users, setUsers}}>
             {loaded && children}

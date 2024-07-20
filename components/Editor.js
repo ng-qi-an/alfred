@@ -16,6 +16,7 @@ import { TabView, TabPanel } from 'primereact/tabview';
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from 'primereact/button';
+import { ButtonGroup } from 'primereact/buttongroup';
 
 export default function Editor({onChange=()=>{}, onFileChange=()=>{}, readOnly, files:ffiles}){
   const [actualFiles, setActualFiles] = useState({})
@@ -61,38 +62,43 @@ export default function Editor({onChange=()=>{}, onFileChange=()=>{}, readOnly, 
     </>
   }
   return <SandpackProvider template="static" theme={'light'} files={ffiles} className='w-full w-full flex items-center'>
-      <SandpackLayout style={{height: 'calc(100vh - 20px)', width: 'calc(100vw - 40px)'}}>
+      <SandpackLayout className='flex items-center w-full h-full' >
         {/* <SandpackFileExplorer className='h-full'/> */}
-        <Splitter style={{width: 'calc(100%)'}}>
-          <SplitterPanel className='flex flex-col w-full' style={{height: 'calc(100vh - 20px)'}}>
+        {/* <Splitter style={{width: 'calc(100%)'}}>
+          <SplitterPanel className='flex flex-col w-full' style={{height: 'calc(100vh - 20px)'}}> */}
             <CodeGetter/>
-            <div className='w-full h-full flex flex-col items-center'>
-              <div className='flex items-center gap-2 w-full overflow-x-auto h-[80px] px-4 border-b-2 border-b-zinc-100'>
+            
+            <div className='h-full w-full flex items-center gap-2 p-[10px]'>
+            <div className='flex flex-col items-center h-full overflow-auto min-w-[200px] gap-2 py-6 rounded-xl '>
+                <h2 className='text-lg w-full px-4 font-semibold mt-2'>Files</h2>
                 {Object.keys(actualFiles).map((file, i)=>{
-                  return <Button size='small' severity={actualActiveFile != file && 'secondary'} rounded text={actualActiveFile != file} key={i} onClick={()=> {setChangeActiveFile(file)}} className={`${actualActiveFile != file && 'bg-zinc-100'} text-[16px]`}>{file}</Button>
+                  return <Button size='small' key={i} onClick={()=> {setChangeActiveFile(file)}} plain className={`${actualActiveFile != file ? 'bg-transparent hover:bg-zinc-100' : 'bg-white'}  text-black text-[16px] w-full font-medium border-none no-outline`} >{file.replace('/', "")}</Button>
                 })}
-              </div>
-              <div className='w-full h-full overflow-auto'>
-                {readOnly ? <SandpackCodeViewer showTabs={false} showLineNumbers code={actualFiles[actualActiveFile] && actualFiles[actualActiveFile].code}/> : <SandpackCodeEditor showLineNumbers showTabs={false} style={{width: '100%'}}/>}
-              </div>
             </div>
-          </SplitterPanel>
-          <SplitterPanel className='flex items-center w-full'>
-            <div className='h-full w-[10px]'/>
-            <Splitter layout='vertical' style={{height: '100%'}}>
-              <SplitterPanel className='flex items-center flex-col'>
-                <SandpackPreview style={{width: '100%', height: '100%'}} showNavigator showRefreshButton={false} showOpenInCodeSandbox={false} />
-                <div className='w-full h-[10px]'/>
-              </SplitterPanel>
-              <SplitterPanel minSize={20} size={5}>
-                <div className='w-full py-3 flex items-center px-4 border-y-2 border-zinc-100 bg-zinc-50'>
-                  <p className='font-medium text-[17px]'>Console</p>
+            <div className='w-full h-full flex items-center bg-white rounded-xl overflow-hidden'>
+                <div className='w-full h-full overflow-auto'>
+                  {readOnly ? <SandpackCodeViewer showTabs={false} showLineNumbers code={actualFiles[actualActiveFile] && actualFiles[actualActiveFile].code}/> : <SandpackCodeEditor showLineNumbers showTabs={false} style={{width: '100%', height: '100%'}}/>}
                 </div>
-                <SandpackConsole className='bg-zinc-50'/>
-              </SplitterPanel>
-            </Splitter>
-          </SplitterPanel>
-        </Splitter>
+            </div>
+            {/* </SplitterPanel>
+            <SplitterPanel className='flex items-center w-full w-[200px]'> */}
+            <div className='flex items-center min-w-[400px] h-full rounded-xl overflow-hidden'>
+              <Splitter layout='vertical' style={{height: '100%'}} className='w-full'>
+                <SplitterPanel className='flex items-center flex-col'>
+                  <SandpackPreview style={{width: '100%', height: '100%'}} showNavigator showRefreshButton={false} showOpenInCodeSandbox={false} />
+                  <div className='w-full h-[10px]'/>
+                </SplitterPanel>
+                <SplitterPanel minSize={20} size={5}>
+                  <div className='w-full py-3 flex items-center px-4 border-y-2 border-zinc-100 bg-zinc-50'>
+                    <p className='font-medium text-[17px]'>Console</p>
+                  </div>
+                  <SandpackConsole className='bg-zinc-50'/>
+                </SplitterPanel>
+              </Splitter>
+            </div>
+            {/* </SplitterPanel>
+          </Splitter> */}
+          </div>
       </SandpackLayout>
   </SandpackProvider>
 }

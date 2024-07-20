@@ -16,7 +16,7 @@ import { MainContext } from "../layout";
 import Editor from "@/components/Editor";
 export default function Home(){
   const ctx = useContext(MainContext)
-  return <div className="flex flex-col items-center justify-center h-screen px-[20px]">
+  return <div className="flex flex-col items-center justify-center h-screen px-[20px] py-[10px]">
       {/* <SandpackProvider template="static" theme={'light'} className='w-full w-full flex items-center'>
         <SandpackLayout style={{height: 'calc(100vh - 20px)', width: 'calc(100vw - 40px)'}}>
           <SandpackFileExplorer className='h-full'/>
