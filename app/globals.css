@@ -20,6 +20,8 @@
 
 .sp-layout {
   flex-wrap: nowrap !important;
+  background-color: transparent !important;
+  border: none !important;
 }
 
 .no-outline {
