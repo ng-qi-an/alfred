@@ -1,8 +1,10 @@
 'use client';
 
 import { Inter, Nunito } from "next/font/google";
+
 import "./globals.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
+
 import { PrimeReactProvider } from 'primereact/api';
 import { createContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";

@@ -1,7 +1,6 @@
 @layer tailwind-base, primereact, tailwind-utilities;
 
 /* IMPORTANT: In "styled" mode you must add the PrimeReact Theme here. Do NOT include in "unstyled" mode */
-@import 'primereact/resources/themes/lara-light-cyan/theme.css' layer(primereact);
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 @layer tailwind-base {
@@ -60,4 +59,54 @@ body {
 
 .shadow {
   box-shadow: 2px 4px 15px 0 rgba(0, 0, 0, 0.05);
+}
+
+.mdxeditor h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.mdxeditor h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.mdxeditor h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.mdxeditor h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.mdxeditor h5 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.mdxeditor ul, ol {
+  list-style: revert;
+  list-style-position: inside;
+
+}
+
+.mdxeditor-popup-container {
+  z-index: 1105 !important;
 }

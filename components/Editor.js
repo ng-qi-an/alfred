@@ -42,7 +42,6 @@ export default function Editor({onChange=()=>{}, onFileChange=()=>{}, readOnly, 
       }, [files])
       useEffect(()=>{
         if (activeFile){
-          console.log(activeFile)
           onFileChange(activeFile)
           setActualActiveFile(activeFile)
         }
@@ -72,7 +71,7 @@ export default function Editor({onChange=()=>{}, onFileChange=()=>{}, readOnly, 
             <div className='flex flex-col items-center h-full overflow-auto min-w-[200px] gap-2 py-6 rounded-xl '>
                 <h2 className='text-lg w-full px-4 font-semibold mt-2'>Files</h2>
                 {Object.keys(actualFiles).map((file, i)=>{
-                  return <Button size='small' key={i} onClick={()=> {setChangeActiveFile(file)}} plain className={`${actualActiveFile != file ? 'bg-transparent hover:bg-zinc-200 text-zinc-500' : 'bg-white text-black'} text-[16px] w-full font-medium border-none no-outline`} >{file.replace('/', "")}</Button>
+                  return <Button type='button' size='small' key={i} onClick={()=> {setChangeActiveFile(file)}} plain className={`${actualActiveFile != file ? 'bg-transparent hover:bg-zinc-200 text-zinc-500' : 'bg-white text-black'} text-[16px] w-full font-medium border-none no-outline`} >{file.replace('/', "")}</Button>
                 })}
             </div>
             <div className='w-full h-full flex items-center bg-white rounded-xl overflow-hidden'>

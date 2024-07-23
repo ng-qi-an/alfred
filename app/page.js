@@ -7,8 +7,6 @@ import { TabMenu } from 'primereact/tabmenu';
 import { useContext, useEffect, useState } from "react";
 import { MainContext } from "./layout";
 import { Dialog } from 'primereact/dialog';
-import { IconField } from 'primereact/iconfield';
-import { InputIcon } from 'primereact/inputicon';
 import { InputText } from 'primereact/inputtext';
 
 export default function Page(){
